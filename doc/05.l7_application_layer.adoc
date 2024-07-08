@@ -89,7 +89,7 @@ $ nslookup nhnacademy.com
 2. IP 로 웹 서버에 접속
 
 ---
-[cols="1,1,1",frame=none,grid=none]
+[cols="1,1a,1",frame=none,grid=none]
 |===
 <s|
 link:04.dns.adoc[Domain Name Service]

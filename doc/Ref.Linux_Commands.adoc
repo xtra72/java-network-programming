@@ -10,4 +10,16 @@
 ** -n --numeric : 소켓 정보를 서비스 이름(별도 파일 - /etc/services)이 아닌 숫자로 표시
 
 ---
-link:00.index.adoc[돌아가기]
+[cols="1,1a,1",frame=none,grid=none]
+|===
+<s|
+^s|
+ifndef::env-github[]
+link:../index.adoc[목차]
+endif::[]
+
+ifdef::env-github[]
+[목차](../README.md)
+endif::[]
+>s|
+|===

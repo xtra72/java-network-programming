@@ -94,7 +94,7 @@ Client socket의 동작 과정은 다음과 같다.
 * 데이터 송수신이 완료되거나 상대 socket의 닫힘이 감지되면 socket을 닫음
 
 ---
-[cols="1,1,1",frame=none,grid=none]
+[cols="1,1a,1",frame=none,grid=none]
 |===
 <s|
 ^s|

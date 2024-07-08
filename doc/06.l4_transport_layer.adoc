@@ -226,7 +226,7 @@ image::https://upload.wikimedia.org/wikipedia/commons/2/24/TCP_Slow-Start_and_Co
 ---
 link:00.index.adoc[돌아가기]
 ---
-[cols="1,1,1",frame=none,grid=none]
+[cols="1,1a,1",frame=none,grid=none]
 |===
 <s|
 link:05.l7_application_layer.adoc[L7 응용 계층]

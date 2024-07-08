@@ -252,7 +252,7 @@ $ tracert naver.com      # window
 ** https://www.msit.go.kr/bbs/view.do?sCode=user&mPid=112&mId=113&bbsSeqNo=94&nttSeqNo=3180886
 
 ---
-[cols="1,1,1",frame=none,grid=none]
+[cols="1,1a,1",frame=none,grid=none]
 |===
 <s|
 link:06.l4_transport_layer.adoc[L4 전송 계층]

@@ -9,4 +9,16 @@
 ** Hostname을 사용 가
 
 ---
-link:00.index.adoc[돌아가기]
+[cols="1,1a,1",frame=none,grid=none]
+|===
+<s|
+^s|
+ifndef::env-github[]
+link:../index.adoc[목차]
+endif::[]
+
+ifdef::env-github[]
+[목차](../README.md)
+endif::[]
+>s|
+|===

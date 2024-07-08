@@ -216,7 +216,7 @@ image::image/osi_vs_tcpip.svg[title="OSI Model vs TCP/IP Model",align=center]
 * https://www.baeldung.com/cs/osi-packets-vs-frames[Baeldung: OSI Packets vs Frames]
 
 ---
-[cols="1,1,1",frame=none,grid=none]
+[cols="1,1a,1",frame=none,grid=none]
 |===
 <s|link:02.java_socket_communication.adoc[Java Socket 통신]
 ^s|
