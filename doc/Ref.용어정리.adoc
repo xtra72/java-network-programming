@@ -9,7 +9,7 @@
 ** Hostname을 사용 가
 
 ---
-[cols="1,1a,1",frame=none,grid=none]
+[cols="1,1,1",frame=none,grid=none]
 |===
 <s|
 ^s|

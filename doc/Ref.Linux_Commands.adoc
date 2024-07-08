@@ -10,7 +10,7 @@
 ** -n --numeric : 소켓 정보를 서비스 이름(별도 파일 - /etc/services)이 아닌 숫자로 표시
 
 ---
-[cols="1,1a,1",frame=none,grid=none]
+[cols="1,1,1",frame=none,grid=none]
 |===
 <s|
 ^s|

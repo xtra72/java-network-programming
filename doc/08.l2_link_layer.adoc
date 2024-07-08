@@ -167,7 +167,7 @@ image::./image/topologies.png[Topologies]
 == 스위치를 포함한 구성
 
 ---
-[cols="1,1a,1",frame=none,grid=none]
+[cols="1,1,1",frame=none,grid=none]
 |===
 <s|
 link:07.l3_network_layer.adoc[L3 네트워크 계층]

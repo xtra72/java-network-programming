@@ -168,7 +168,7 @@ image::image/multi_chat_server.png[align="center"]
 link:quiz/quiz-12.adoc[Quiz-12. Client에서 보내온 메시지를 접속한 모든 client에 전송하는 broadcasting server를 만들어 보자.]
 
 ---
-[cols="1,1a,1",frame=none,grid=none]
+[cols="1,1,1",frame=none,grid=none]
 |===
 <s|
 link:01.socket.adoc[Socket이란?]

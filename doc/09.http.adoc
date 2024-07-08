@@ -956,7 +956,7 @@ $ curl -v https://nhnent.dooray.com
 ----
 
 ---
-[cols="1,1a,1",frame=none,grid=none]
+[cols="1,1,1",frame=none,grid=none]
 |===
 <s|
 link:08.l2_link_layer.adoc[L2 데이터 링크 계층]
