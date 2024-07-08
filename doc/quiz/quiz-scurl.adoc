@@ -1,0 +1,285 @@
+== Quiz-scurl. scurl(simple-curl) 만들기
+
+curlfootnote:[https://curl.se/[curl - transfer a URL]] 프로그램이 있다. 이 프로그램과 유사하게 동작하는 simple-curl을 만들어 보자.
+
+{empty} +
+
+=== 요구 사항
+
+scurl은 다음과 같이 동작합니다.
+
+* URL을 입력 인자로 받아 요청을 보내고, 응답을 화면에 출력한다.
+* Option으로 GET외에 다른 method(HEAD, POST, PUT, DELETE)로 요청할 수 있다.
+* POST, PUT 등의 method를 사용할 때는 전송할 데이터를 지정할 수 있다.
+* 기본적으로는 request header와 response header를 출력하지 않지만, option에 따라 출력할 수 있다.
+* 응답의 ContentType을 확인하여 "text/*", "application/json"만 화면에 출력한다.
+* POST, PUT의 경우 -H로 Content-Type이 지정되지 않으면, application/x-www-form-urlencoded 를 기본 타입으로 사용한다.
+
+{empty} +
+
+=== 사용법
+
+[source,console]
+----
+Usage: scurl [option] url
+Options:
+-v                  verbose, 요청, 응답 헤더를 출력한다.
+-H <line>           임의의 헤더를 서버로 전송한다.
+-d <data>           POST, PUT 등에 데이터를 전송한다.
+-X <command>        사용할 method를 지정한다. 지정되지 않은 경우, 기본값은 GET
+-L                  서버의 응답이 30x 계열이면 다음 응답을 따라 간다.
+-F <name=content>   multipart/form-data를 구성하여 전송한다. content 부분에 @filename을 사용할 수 있다.
+----
+
+{empty} +
+
+=== 동작 보기
+
+1. GET 요청
++
+[source,console]
+----
+~$ java scurl http://httpbin.org/get
+{
+  "args": {},
+  "headers": {
+    "Accept": "*/*",
+    "Host": "httpbin.org",
+    "User-Agent": "curl/7.79.1",
+    "X-Amzn-Trace-Id": "Root=1-660214ff-7ce430b84a4d4947402b346f"
+  },
+  "origin": "220.67.223.95",
+  "url": "http://httpbin.org/get"
+}
+----
++
+2. Method명을 명시적으로 GET 요청
++
+[source,console]
+----
+~$ java scurl -X GET http://httpbin.org/get
+{
+  "args": {},
+  "headers": {
+    "Accept": "*/*",
+    "Host": "httpbin.org",
+    "User-Agent": "curl/7.79.1",
+    "X-Amzn-Trace-Id": "Root=1-66021528-2fcde09355a69e0a56f2294c"
+  },
+  "origin": "220.67.223.95",
+  "url": "http://httpbin.org/get"
+}
+----
+3. Request/Response header 출력
++
+[source,console]
+----
+~$ java scurl -v -X GET http://httpbin.org/get
+Note: Unnecessary use of -X or --request, GET is already inferred.
+*   Trying 18.211.129.101:80...
+* Connected to httpbin.org (18.211.129.101) port 80 (#0)
+> GET /get HTTP/1.1
+> Host: httpbin.org
+> User-Agent: curl/7.79.1
+> Accept: */*
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< Date: Tue, 26 Mar 2024 00:22:15 GMT
+< Content-Type: application/json
+< Content-Length: 254
+< Connection: keep-alive
+< Server: gunicorn/19.9.0
+< Access-Control-Allow-Origin: *
+< Access-Control-Allow-Credentials: true
+<
+{
+  "args": {},
+  "headers": {
+    "Accept": "*/*",
+    "Host": "httpbin.org",
+    "User-Agent": "curl/7.79.1",
+    "X-Amzn-Trace-Id": "Root=1-66021537-4b5b99d64114f821099515cb"
+  },
+  "origin": "220.67.223.95",
+  "url": "http://httpbin.org/get"
+}
+* Connection #0 to host httpbin.org left intact
+----
+4. X-Custom-Header: NA를 request header에 추가
++
+[source,console]
+----
+~$ java scurl -v -H "X-Custom-Header: NA" http://httpbin.org/get
+*   Trying 18.208.241.22:80...
+* Connected to httpbin.org (18.208.241.22) port 80 (#0)
+> GET /get HTTP/1.1
+> Host: httpbin.org
+> User-Agent: curl/7.79.1
+> Accept: */*
+> X-Custom-Header: NA
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< Date: Tue, 26 Mar 2024 00:22:33 GMT
+< Content-Type: application/json
+< Content-Length: 284
+< Connection: keep-alive
+< Server: gunicorn/19.9.0
+< Access-Control-Allow-Origin: *
+< Access-Control-Allow-Credentials: true
+<
+{
+  "args": {},
+  "headers": {
+    "Accept": "*/*",
+    "Host": "httpbin.org",
+    "User-Agent": "curl/7.79.1",
+    "X-Amzn-Trace-Id": "Root=1-66021549-32c524cd5591b26611764a3e",
+    "X-Custom-Header": "NA"
+  },
+  "origin": "220.67.223.95",
+  "url": "http://httpbin.org/get"
+}
+* Connection #0 to host httpbin.org left intact
+----
+5. POST 요청
++
+[source,console]
+----
+~$ java scurl -v -d "{\"hello\": \"world\"}" -H "Content-Type: application/json" http://httpbin.org/post
+*   Trying 50.16.63.240:80...
+* Connected to httpbin.org (50.16.63.240) port 80 (#0)
+> POST /post HTTP/1.1
+> Host: httpbin.org
+> User-Agent: curl/7.79.1
+> Accept: */*
+> Content-Type: application/json
+> Content-Length: 18
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< Date: Tue, 26 Mar 2024 00:23:39 GMT
+< Content-Type: application/json
+< Content-Length: 432
+< Connection: keep-alive
+< Server: gunicorn/19.9.0
+< Access-Control-Allow-Origin: *
+< Access-Control-Allow-Credentials: true
+<
+{
+  "args": {},
+  "data": "{\"hello\": \"world\"}",
+  "files": {},
+  "form": {},
+  "headers": {
+    "Accept": "*/*",
+    "Content-Length": "18",
+    "Content-Type": "application/json",
+    "Host": "httpbin.org",
+    "User-Agent": "curl/7.79.1",
+    "X-Amzn-Trace-Id": "Root=1-6602158b-3efc304c568e33640c6435fa"
+  },
+  "json": {
+    "hello": "world"
+  },
+  "origin": "220.67.223.95",
+  "url": "http://httpbin.org/post"
+}
+* Connection #0 to host httpbin.org left intact
+----
+* POST body는 -d로 지정
+* body설정시 '"' 앞에 escape(\) 주의
+6. 30x 응답 처리
++
+[source, console]
+-----
+~$ java scurl -v -L http://httpbin.org/status/302
+*   Trying 18.208.241.22:80...
+* Connected to httpbin.org (18.208.241.22) port 80 (#0)
+> GET /status/302 HTTP/1.1
+> Host: httpbin.org
+> User-Agent: curl/7.79.1
+> Accept: */*
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 302 FOUND
+< Date: Tue, 26 Mar 2024 00:24:19 GMT
+< Content-Length: 0
+< Connection: keep-alive
+< Server: gunicorn/19.9.0
+< location: /redirect/1
+< Access-Control-Allow-Origin: *
+< Access-Control-Allow-Credentials: true
+<
+* Connection #0 to host httpbin.org left intact
+* Issue another request to this URL: 'http://httpbin.org/redirect/1'
+* Found bundle for host httpbin.org: 0x600003d1c810 [serially]
+* Can not multiplex, even if we wanted to!
+* Re-using existing connection! (#0) with host httpbin.org
+* Connected to httpbin.org (18.208.241.22) port 80 (#0)
+> GET /redirect/1 HTTP/1.1
+> Host: httpbin.org
+> User-Agent: curl/7.79.1
+> Accept: */*
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 302 FOUND
+< Date: Tue, 26 Mar 2024 00:24:19 GMT
+< Content-Type: text/html; charset=utf-8
+< Content-Length: 215
+< Connection: keep-alive
+< Server: gunicorn/19.9.0
+< Location: /get
+< Access-Control-Allow-Origin: *
+< Access-Control-Allow-Credentials: true
+<
+* Ignoring the response-body
+* Connection #0 to host httpbin.org left intact
+* Issue another request to this URL: 'http://httpbin.org/get'
+* Found bundle for host httpbin.org: 0x600003d1c810 [serially]
+* Can not multiplex, even if we wanted to!
+* Re-using existing connection! (#0) with host httpbin.org
+* Connected to httpbin.org (18.208.241.22) port 80 (#0)
+> GET /get HTTP/1.1
+> Host: httpbin.org
+> User-Agent: curl/7.79.1
+> Accept: */*
+>
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< Date: Tue, 26 Mar 2024 00:24:19 GMT
+< Content-Type: application/json
+< Content-Length: 254
+< Connection: keep-alive
+< Server: gunicorn/19.9.0
+< Access-Control-Allow-Origin: *
+< Access-Control-Allow-Credentials: true
+<
+{
+  "args": {},
+  "headers": {
+    "Accept": "*/*",
+    "Host": "httpbin.org",
+    "User-Agent": "curl/7.79.1",
+    "X-Amzn-Trace-Id": "Root=1-660215b3-5edcac724a076d885b73e132"
+  },
+  "origin": "220.67.223.95",
+  "url": "http://httpbin.org/get"
+}
+* Connection #0 to host httpbin.org left intact
+-----
+* 302 응답을 받고, 응답에 지정된 Location을 따라 간다.
+** 지정된 Location에 다시 요청했을 때, 301, 302, 307, 308 응답이 나오면 다시 따라간다.
+** 최대 5번까지만 따라간다.
+** 6번째 redirection 메시지를 만난 경우 에러 메시지를 출력한다.
+7. 파일 전송
++
+[source,console]
+----
+~$ java scurl -F "upload=@file_path" http://httpbin.org/post
+----
+* file_path에 저정된 파일을 multipart/form-data로 전송한다.
+--
++
+
