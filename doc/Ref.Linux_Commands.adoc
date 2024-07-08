@@ -14,12 +14,6 @@
 |===
 <s|
 ^s|
-ifndef::env-github[]
 link:../index.adoc[목차]
-endif::[]
-
-ifdef::env-github[]
-[목차](../README.md)
-endif::[]
 >s|
 |===

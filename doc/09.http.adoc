@@ -961,12 +961,6 @@ $ curl -v https://nhnent.dooray.com
 <s|
 link:08.l2_link_layer.adoc[L2 데이터 링크 계층]
 ^s|
-ifndef::env-github[]
 link:../index.adoc[목차]
-endif::[]
-
-ifdef::env-github[]
-[목차](../README.md)
-endif::[]
 >s|
 |===

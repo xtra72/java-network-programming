@@ -257,13 +257,7 @@ $ tracert naver.com      # window
 <s|
 link:06.l4_transport_layer.adoc[L4 전송 계층]
 ^s|
-ifndef::env-github[]
 link:../index.adoc[목차]
-endif::[]
-
-ifdef::env-github[]
-[목차](../README.md)
-endif::[]
 >s|
 link:08.l2_link_layer.adoc[L2 데이터 링크 계층]
 |===

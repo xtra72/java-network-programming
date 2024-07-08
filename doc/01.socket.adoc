@@ -98,13 +98,7 @@ Client socket의 동작 과정은 다음과 같다.
 |===
 <s|
 ^s|
-ifndef::env-github[]
 link:../index.adoc[돌아가기]
-endif::[]
-
-ifdef::env-github[]
-[돌아가기](../README.md)
-endif::[]
 >s|
 link:02.java_socket_communication.adoc[Java Socket 통신]
 |===

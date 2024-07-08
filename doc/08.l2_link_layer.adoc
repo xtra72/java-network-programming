@@ -172,13 +172,7 @@ image::./image/topologies.png[Topologies]
 <s|
 link:07.l3_network_layer.adoc[L3 네트워크 계층]
 ^s|
-ifndef::env-github[]
 link:../index.adoc[목차]
-endif::[]
-
-ifdef::env-github[]
-[목차](../README.md)
-endif::[]
 >s|
 link:09.http.adoc[HTTP]
 |===

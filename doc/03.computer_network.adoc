@@ -220,12 +220,6 @@ image::image/osi_vs_tcpip.svg[title="OSI Model vs TCP/IP Model",align=center]
 |===
 <s|link:02.java_socket_communication.adoc[Java Socket 통신]
 ^s|
-ifndef::env-github[]
 link:../index.adoc[목차]
-endif::[]
-
-ifdef::env-github[]
-[목차](../README.md)
-endif::[]
 >s|link:04.dns.adoc[Domain Name Service]
 |===

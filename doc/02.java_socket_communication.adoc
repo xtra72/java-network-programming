@@ -173,13 +173,7 @@ link:quiz/quiz-12.adoc[Quiz-12. Client에서 보내온 메시지를 접속한 �
 <s|
 link:01.socket.adoc[Socket이란?]
 ^s|
-ifndef::env-github[]
 link:../index.adoc[목차]
-endif::[]
-
-ifdef::env-github[]
-[목차](../README.md)
-endif::[]
 >s|
 link:03.computer_network.adoc[Computer Network]
 |===
