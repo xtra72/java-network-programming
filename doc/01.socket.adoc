@@ -1,3 +1,5 @@
+:imagesdir: ./image
+
 = Socket
 
 == Socket이란?
@@ -55,7 +57,7 @@
 
 Socket Communication(통신)은 아래 그림과 같은 흐름을 갖는다.
 
-image::image/socket_communication_flow.svg[title="Socket 통신", align="center"]
+image::socket_communication_flow.svg[title="Socket 통신", align="center"]
 
 * server와 client 필요
 * 다중 접속을 허용할 경우에는 개별 접속마다 별도의 통신 관리 필요

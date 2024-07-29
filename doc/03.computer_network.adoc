@@ -1,3 +1,5 @@
+:imagesdir: ./image
+
 == Computer Network
 
 {empty} +
@@ -151,7 +153,7 @@ Computing device간 메시지 전달을 위해 중간 연결 역할을 수행하
 
 아래의 그림은 네트워크에서 존재할 수 있는 프로토콜 스택을 보여준다.
 
-image::image/protocols_in_different_layers_of_a_network.png[title="Protocols in different layers of a network"]
+image::protocols_in_different_layers_of_a_network.png[title="Protocols in different layers of a network"]
 
 * 오늘날 대부분의 인터넷에서는 중간 계층 프로토콜이 상당히 일관성 있지만, 맨 위와 맨 아래는 매우 다양하다.
 * 어떤 호스트는 Ethernet을 사용하고, 어떤 호스트는 Wi-Fi를 사용하며, 어떤 호스트는 PPP를 사용하고, 어떤 호스트는 다른 것을 사용한다.
@@ -165,7 +167,7 @@ image::image/protocols_in_different_layers_of_a_network.png[title="Protocols in 
 
 네트워크 기능을 계층으로 분리하는 것은 네트워킹의 기본 개념으로, 종종 OSI(Open Systems Interconnection) 모델 또는 TCP/IP 모델로 불립니다. 이러한 모델은 각각의 특정 기능을 갖춘 표준화된 프로토콜과 계층 집합을 정의한다:
 
-image::image/OSI_Model.svg[title="OSI Model"]
+image::OSI_Model.svg[title="OSI Model"]
 
 * Physical Layer: 이 계층은 실제 데이터 전송을 다룹니다(전선, 광섬유 등). 하드웨어 특성, 신호 및 전송 속도를 정의한다.
 * Data Link Layer계층: 이 계층은 직접 연결된 두 노드 간의 신뢰할 수 있는 링크를 만듭니다. 프레임 형식, 오류 감지 및 흐름 제어와 같은 문제를 처리한다. Ethernet은 데이터 링크 계층 기술의 예입니다.
@@ -182,7 +184,7 @@ image::image/OSI_Model.svg[title="OSI Model"]
 
 ==== TCP/IP Model
 
-image::image/TCPIP_MOdel.svg[title="TCP/IP Model"]
+image::TCPIP_Model.svg[title="TCP/IP Model"]
 
 TCP/IP 프로토콜 스택의 구성 요소를 설명한다.
 
@@ -206,7 +208,7 @@ Transport layer의 주요 목적은 한 응용 프로그램에서 다른 응용 
 
 Application layer는 TCP/IP 인터넷 전체에서 사용 가능한 서비스에 접근하는 사용자 호출 응용 프로그램으로 구성된다. 응용 프로그램은 데이터를 전송 레이어로 전달하기 위해 필요한 형식으로 전달한다.
 
-image::image/osi_vs_tcpip.svg[title="OSI Model vs TCP/IP Model",align=center]
+image::osi_vs_tcpip.svg[title="OSI Model vs TCP/IP Model",align=center]
 
 
 == 참고
